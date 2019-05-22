@@ -98,12 +98,13 @@ liquid_only = waste.loc[waste.liquid_waste > 0]
 liquid_count = liquid_only.groupby('disposal_method').count()
 liquid_count = liquid_count.sort_values(by=['liquid_waste'], ascending=False)
 
+plt.figure()
 liquid_count.liquid_waste.plot(kind='bar')
 plt.yscale('log')
 plt.title('Liquid Waste Disposal Methods - PA 2018')
 plt.ylabel('Frequency (Log Scale)')
 plt.xlabel('Disposal Method')
-
+plt.show()
 
 # Selects the data with solid waste and plots the frequency of each
 # disposal method
@@ -111,8 +112,10 @@ solid_only = waste.loc[waste.solid_waste > 0]
 solid_count = solid_only.groupby('disposal_method').count()
 solid_count = solid_count.sort_values(by=['solid_waste'], ascending=False)
 
+plt.figure()
 solid_count.solid_waste.plot(kind='bar')
 plt.yscale('log')
 plt.title('Solid Waste Disposal Methods - PA 2018')
 plt.ylabel('Frequency (Log Scale)')
 plt.xlabel('Disposal Method')
+plt.show()
