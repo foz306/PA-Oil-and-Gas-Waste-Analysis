@@ -118,4 +118,30 @@ plt.yscale('log')
 plt.title('Solid Waste Disposal Methods - PA 2018')
 plt.ylabel('Frequency (Log Scale)')
 plt.xlabel('Disposal Method')
+
+# Calculates the total quantites of each type of disposal method
+liquid_quantities = liquid_only.groupby('disposal_method').sum()
+liquid_quantities = liquid_quantities.sort_values(
+        by=['liquid_waste'], ascending=False)
+
+# Creates two charts.  One using a log scale and the second
+# using a linear scale
+
+plt.figure()
+liquid_quantities.liquid_waste.plot(kind='bar')
+plt.yscale('log')
+plt.title('Disposal of Liquid Waste - PA 2018')
+plt.ylabel('Millions of Barrels (Log Scale)')
+plt.xlabel('Disposal Method')
 plt.show()
+
+plt.figure()
+liquid_quantities.liquid_waste.plot(kind='bar')
+plt.title('Disposal of Liquid Waste - PA 2018')
+plt.ylabel('Millions of Barrels')
+plt.xlabel('Disposal Method')
+plt.show()
+
+# Shows the actual quanitities for each type
+liquid_quantities.liquid_waste
+liquid_quantities.liquid_waste.sum()
